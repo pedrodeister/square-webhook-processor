@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "regions": ["cdg1"],
+  "functions": {
+    "api/*.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/retry-failed-events",
+      "schedule": "0 */2 * * *"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "buildCommand": "npm install"
+}
