@@ -11,6 +11,33 @@
     {
       "path": "/api/retry-failed-events",
       "schedule": "0 */2 * * *"
+    },
+    {
+      "path": "/api/health?cron=true",
+      "schedule": "*/15 * * * *"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/webhook",
+      "dest": "/api/square-webhook.js"
+    },
+    {
+      "src": "/validate",
+      "dest": "/api/validate.js"
+    },
+    {
+      "src": "/health",
+      "dest": "/api/health.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/dashboard",
+      "dest": "/api/dashboard.js",
+      "methods": ["GET"],
+      "headers": {
+        "Cache-Control": "s-maxage=60"
+      }
     }
   ],
   "env": {
